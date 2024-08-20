@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HB-YouTube</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        *{
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+        .center{
+            display: flex;
+        }
+        header{
+            display: flex;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            padding-top: 10px;
+            z-index: 1;
+            background-color: white;
+        } 
+        .logo{
+            font-size: 23px;
+            margin-left: 15px;
+        }
+        .logo{
+            padding: 5px;
+            float: left;
+            font-size: 25px;
+        }
+        .logo img{
+            margin-left: 15px;
+        }
+        .search{
+            border: 1px solid;
+            border-radius: 25px;   
+            width: 620px;
+            color: gray;
+            height: 40px;
+            display: flex;
+            justify-content: space-between;
+            margin-left: 100px;
+        }
+        .search :first-child{
+            padding: 10px 15px 10px 15px ;
+        }
+        .search .bi-search{
+            font-size: 18px;
+            /* border: 1px solid; */
+            padding: 10px 15px 10px 15px;
+            border-left: 1px solid;
+            border-right: 1px solid;
+            border-top-right-radius: 20px; 
+            border-bottom-right-radius: 20px; 
+            background-color: rgba(234, 233, 233, 0.501);
+        }
+        .color-gray{
+            color: gray;
+        }
+        .bi-mic-fill{
+            padding-top: 10px;
+            margin-left: 20px;
+            border-radius: 50%;
+            width: 35px;
+            text-align: center;
+            background-color: rgba(234, 233, 233, 0.501);
+            height: 30px;
+        }
+        .right-options{
+            display: flex;
+            font-size: 22px;
+        }
+        .right-options span{
+            margin-right: 20px;
+            padding: 10px 10px 10px 0;
+        }
+        .account{
+            padding-top: 0;
+        }
+        .account img{
+            margin-top: 0;
+        }
+        /* section{
+            display: grid;
+            grid-template-columns: 2.5fr 9.5fr;
+        } */
+         main{
+            padding-left: 300px;
+         }
+        ul{
+            list-style: none;
+            padding-left: 22px;
+        }
+        .nav-category{
+            margin-bottom: 10px;
+            border-bottom: 1px solid lightgray;
+            width: 70%;
+            font-size: 19px;
+            color: rgba(0, 0, 0, 0.785);
+        }
+        .nav-category li span{
+            padding-left: 24px;
+            font-size: 15px;
+        }
+        .nav-category li{
+            margin-bottom: 20px;
+            padding-left: 0;
+        }
+        .separator{
+            margin: 20px 0 20px 20px;
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0.785);
+        }
+        nav{
+            height: 90vh;
+            overflow: auto;
+            width: 250px;
+        }
+        .channel-bio{
+            padding-top: 20px;
+        }
+        .channel-bio img{
+            float: left;
+        }
+        .headings{
+            padding-left: 190px;
+            font-size: 14px;
+        }
+        .main-heading{
+            font-size: 35px;
+            font-weight: bold;
+        }
+        .second-heading{
+            color: gray;
+        }
+        .first-link{
+            color: gray;
+        }
+        .second-link{
+            color: rgba(0, 0, 255, 0.814);
+        }
+        a{
+          text-decoration: none;   
+        }
+        .headings div{
+            margin-bottom: 10px;
+        }
+        .headings b{
+            font-weight: bold;
+            color: black;
+        }
+        .subscribe{
+            border-radius: 15px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.921);
+            color: white;
+            width: 70px;
+            padding: 8px;
+        }
+        .subscribe:hover{
+            cursor: pointer;
+        }
+        .categories{
+            display: flex;
+            list-style: none;
+            color: gray;
+            padding-left: 5px;
+        }
+
+        .categories li{
+            margin: 20px 20px 0 0;
+            font-weight: 550;
+        }
+        .categories li:hover{
+            color: black;
+            cursor: pointer;
+        }
+        .horizontal-ruler{
+            height: 0.5px;
+            background-color: gray;
+            margin: 15px 0 15px 0;
+            width: 1110px;
+            margin-left: -25px;
+            color: gray;
+            font-weight: 10;
+        }
+        .video-age span{
+            font-size: 14px;
+            font-weight: 550;
+            margin-right: 11px;
+            width: 80px;
+            background-color: rgba(128, 128, 128, 0.137);
+            border-radius: 10px;
+            padding: 7px 12px 7px 12px;
+        }
+        .video-age span:hover{
+            background-color: black;
+            color: white;
+            cursor: pointer;
+        }
+        .iframe-container iframe{
+            border-radius: 15px;
+            margin-top: 30px;
+            height: 140px;
+            width: 250px;
+            margin-right: 10px;
+        } 
+        .yt-nav{
+            position: fixed;
+            top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span class="bi bi-list"></span>
+            <img src="/public/images/yt-white-image.png" alt="" height="25px" width="70px">
+        </div>
+        <div class="center">
+            <div class="search">
+                <span class="color-gray">Search</span>
+                <span class="bi bi-search"></span>
+            </div>
+            <!-- <span class="vertical-ruler"></span> -->
+            <span class="bi bi-mic-fill">
+            </span>
+        </div>
+        <div class="right-options">
+            <span class="bi bi-camera-video"></span>
+            <span class="bi bi-bell"></span>
+            <span class="account"><img src="/public/images/account1.png" height="30px" width="35px" alt=""></span>
+        </div>
+    </header>
+    <section>
+        <nav class="yt-nav">
+            <ul class="nav-category"> 
+                <li class="bi bi-house"> 
+                    <span>Home</span>
+                </li>
+                <li class="bi bi-play-circle">
+                    <span>Shorts</span>
+                </li>
+                <li class="bi bi-collection-play">
+                    <span>Subscriptions</span>
+                </li>
+            </ul>
+            <div class="separator"><span>You</span> <span class="bi bi-chevron-bar-right"></span></div>
+            <ul class="nav-category">
+                <li class="bi bi-person-square"><span>Channel</span> </li>
+                <li class="bi bi-clock-history"><span>History</span></li>
+                <li class="bi bi-list"><span>Playlists</span></li>
+                <li class="bi bi-play-btn"><span>Your videos</span></li>
+                <li class="bi bi-lightbulb"><span>Your courses</span></li>
+                <li class="bi bi-router-fill"><span>Your podcasts</span></li>
+                <li class="bi bi-stopwatch"><span>Watch later</span></li>
+                <li class="bi-hand-thumbs-up"><span>Liked videos</span></li>
+            </ul>
+            <div class="separator"><span>Subscriptions</span> </div>
+            <ul class="nav-category">
+                <li class="bi bi-person-square"><span>Channel</span> </li>
+                <li class="bi bi-clock-history"><span>History</span></li>
+                <li class="bi bi-list"><span>Playlists</span></li>
+                <li class="bi bi-play-btn"><span>Your videos</span></li>
+                <li class="bi bi-lightbulb"><span>Your courses</span></li>
+                <li class="bi bi-router-fill"><span>Your podcasts</span></li>
+                <li class="bi bi-stopwatch"><span>Watch later</span></li>
+                <li class="bi-hand-thumbs-up"><span>Liked videos</span></li>
+            </ul>
+            <div class="separator"><span>Explore</span> </div>
+            <ul class="nav-category">
+                <li class="bi bi-fire"><span>Trending</span> </li>
+                <li class="bi bi-bag"><span>Shopping</span></li>
+                <li class="bi bi-music-note"><span>Music</span></li>
+                <li class="bi bi-film"><span>Movies</span></li>
+                <li class="bi bi-hdd-network-fill"><span>YLive</span></li>
+                <li class="bi bi-joystick"><span>Gaming</span></li>
+                <li class="bi bi-newspaper"><span>News</span></li>
+                <li class="bi bi-trophy"><span>Sports</span></li>
+                <li class="bi bi-lightbulb"><span>Courses</span></li>
+                <li class="bi bi-emoji-sunglasses"><span>Fashion & Beauty</span></li>
+                <li class="bi bi-hdd-network"><span>Podcasts</span></li>
+            </ul>
+        </nav>
+        <main>
+            <img class="yt-banner" src="/public/images/youtube banner.png" width="96%" alt="">
+            <div class="channel-bio">
+                <img src="/public/images/logo.png" height="160px" alt="">
+                <div class="headings">
+                    <div class="main-heading">PW Institute of Innovation</div>
+                    <div class="second-heading">@PW-IOI • 7.28K subscribers • 160 videos</div>
+                    <div><a class="first-link" href="javascript:void()">Shaping Futures, Empowering Innovators! 🚀 
+                        <b>...more</b> </a>
+                    </div>
+                    <div>
+                        <a href="javascript:void()" class="second-link">pwioi.com/?utm_source=Youtube&utm_medium=Social&utm_campaign=Organic
+                        <b>and 8 more links</b> </a>
+                    </div>
+                    <div class="subscribe">
+                        Subscribe
+                    </div>
+                </div>
+            </div>
+            <ul class="categories">
+                <li>Home</li>
+                <li>Videos</li>
+                <li>Shorts</li>
+                <li>Playlists</li>
+                <li>community</li>
+                <li class="bi bi-search"></li>
+            </ul>
+            <div class="horizontal-ruler"></div>
+            <div class="video-age">
+                <span>Latest</span>
+                <span>Popular</span>
+                <span>Oldest</span>
+            </div>
+            <div class="iframe-container">
+                    <iframe src="https://www.youtube.com/embed/Qx-4gN7XET4?si=FrRBq_EkIi_RJIn6" frameborder="0"></iframe>
+                    <iframe src="https://www.youtube.com/embed/1jhs2Oznx0c?si=qki7RqOi8u_lj4dS" frameborder="0"></iframe>
+                    <iframe src="https://www.youtube.com/embed/Gcbqm4bTeg8?si=Au9qP3HxdY1_8Hsi" frameborder="0"></iframe>
+                    <iframe src="https://www.youtube.com/embed/DY1L7SZR6t0?si=hhj696QDogXCJXTK" frameborder="0"></iframe>
+                    <iframe src="https://www.youtube.com/embed/83_TJkIOj7Q?si=Y6iMH8Y5lCTM18ca" frameborder="0"></iframe>
+                    <iframe src="https://www.youtube.com/embed/BwU8Zfo1PsQ?si=ZtaGHgLZXTD_zC7f" frameborder="0"></iframe>
+                    <iframe src="https://www.youtube.com/embed/9u7WgPg9gPw?si=RD0mbLNPnJfZCjdk" frameborder="0"></iframe>
+                    <iframe src="https://www.youtube.com/embed/OS52G16i_oY?si=Z7ISZ7PZga2rBaGZ" frameborder="0"></iframe>
+            </div>
+        </main>
+    </section>
+</body>
+</html>
